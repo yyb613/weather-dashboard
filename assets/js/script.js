@@ -25,7 +25,7 @@ function getCoords(event) {
 
 // API: Get current/upcoming weather
 function oneCallWeather(lat, lon, cityInput) {
-    var OneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&' + 'lon=' + lon +  '&units=imperial&appid=90f0812cb3a9247776512d212a21e74c';
+    var OneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&' + 'lon=' + lon + '&units=imperial&appid=90f0812cb3a9247776512d212a21e74c';
 
     fetch(OneCallUrl)
         .then(function (response) {
@@ -40,7 +40,7 @@ function oneCallWeather(lat, lon, cityInput) {
 
             var currentTemp = document.querySelector("#currentTemp");
             currentTemp.textContent = oneCallData.current.temp + '°F';
-           
+
             var wind = document.querySelector("#wind");
             wind.textContent = oneCallData.current.wind_speed + ' MPH';
 
@@ -62,6 +62,27 @@ function oneCallWeather(lat, lon, cityInput) {
             } else if (uviValue >= 11) {
                 uvI.setAttribute("class", "eHighUvi"); // Extremely High UVI
             }
+
+            var cardDate1 = document.querySelector('#day-1 > #card-date');
+            cardDate1.textContent = moment().add(1, 'days').format('M/D/YYYY');
+
+            var cardDate2 = document.querySelector('#day-2 > #card-date');
+            cardDate2.textContent = moment().add(2, 'days').format('M/D/YYYY');
+
+            var cardDate3 = document.querySelector('#day-3 > #card-date');
+            cardDate3.textContent = moment().add(3, 'days').format('M/D/YYYY');
+
+            var cardDate4 = document.querySelector('#day-4 > #card-date');
+            cardDate4.textContent = moment().add(4, 'days').format('M/D/YYYY');
+
+            var cardDate5 = document.querySelector('#day-5 > #card-date');
+            cardDate5.textContent = moment().add(5, 'days').format('M/D/YYYY');
+
+            
+            
+            
+          
+
         })
 }
 
