@@ -78,4 +78,6 @@ hr {
     border-radius: 10px;
 } 
 
-
+.card {
+    width: 18rem;
+}
