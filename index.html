@@ -10,11 +10,11 @@
 <body>
     <header>Weather Dashboard</header>
 
-    <aside>
+    <aside class="aside">
         <h1>Search for a City:</h1>
         <form>
-            <input type="text">
-            <input type="submit" value="Search">
+            <input id="cityInput" type="text" placeholder="City, State">
+            <input id="submitForm" type="submit" value="Search">
         </form>
 
         <hr>
@@ -26,14 +26,15 @@
 
     <main>
         <div id="current">
-            
+            <h1>City: <span id="cityName"></span></h1>
+            <h2>Temp: <span id="currentTemp"></span></h2>
+            <h2>Humidity: <span id="humidity"></span></h2>
+            <h2>UV Index: <span id="uvI"></span></h2>
         </div>
         <div id="5-day">
             <h2>5-Day Forecast:</h2>
         </div>
     </main>
-
-
 
     <script src="assets/js/script.js"></script>
 </body>
