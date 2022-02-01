@@ -6,7 +6,7 @@ function getCoords(event) {
     event.preventDefault(); // Prevent Default
 
     var cityInput = document.querySelector("#cityInput").value; // City input from user
-    var geoURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityInput + '&limit=1&appid=90f0812cb3a9247776512d212a21e74c';
+    var geoURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityInput + '&limit=1&appid=90f0812cb3a9247776512d212a21e74c';
 
     fetch(geoURL)
         .then(function (response) {
@@ -21,7 +21,7 @@ function getCoords(event) {
 
 // API: Get current/upcoming weather
 function oneCallWeather(lat, lon, cityInput) {
-    var OneCallUrl = 'http://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&' + 'lon=' + lon + '&appid=90f0812cb3a9247776512d212a21e74c';
+    var OneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&' + 'lon=' + lon + '&appid=90f0812cb3a9247776512d212a21e74c';
 
     fetch(OneCallUrl)
         .then(function (response) {
