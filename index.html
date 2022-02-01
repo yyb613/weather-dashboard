@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
+
 <body>
     <header>Weather Dashboard</header>
 
-    <aside class="aside">
-        <h1>Search for a City:</h1>
-        <form>
-            <input id="cityInput" type="text" placeholder="City, State">
-            <input id="submitForm" type="submit" value="Search">
-        </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <aside class="aside">
+                    <h1>Search for a City:</h1>
+                    <form>
+                        <input id="cityInput" type="text" placeholder="City, State">
+                        <input id="submitForm" type="submit" value="Search">
+                    </form>
 
-        <hr>
+                    <hr>
 
-        <div id="history">
+                    <div id="history">
 
+                    </div>
+                </aside>
+            </div>
+            <div class="col-8">
+                <main>
+                    <div id="current">
+                        <h1><span id="cityName"></span></h1>
+                        <h2>Temp: <span id="currentTemp"></span></h2>
+                        <h2>Humidity: <span id="humidity"></span></h2>
+                        <h2>UV Index: <span id="uvI"></span></h2>
+                    </div>
+                    <div id="5-day">
+                        <h2>5-Day Forecast:</h2>
+                    </div>
+                </main>
+            </div>
         </div>
-    </aside>
+    </div>
 
-    <main>
-        <div id="current">
-            <h1>City: <span id="cityName"></span></h1>
-            <h2>Temp: <span id="currentTemp"></span></h2>
-            <h2>Humidity: <span id="humidity"></span></h2>
-            <h2>UV Index: <span id="uvI"></span></h2>
-        </div>
-        <div id="5-day">
-            <h2>5-Day Forecast:</h2>
-        </div>
-    </main>
 
-    <script src="assets/js/script.js"></script>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/js/script.js"></script>
 </body>
+
 </html>

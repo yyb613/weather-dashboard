@@ -28,6 +28,11 @@ aside, main {
     margin: 20px;
 }
 
+/* Horizontal Rule */
+hr {
+  border: 1px solid black;
+}
+
 /* Current Weather */
 #current {
     border: 1px solid black;
@@ -40,3 +45,37 @@ aside, main {
     color: white;
     border-radius: 10px;
 } 
+
+/* Medium UVI */
+.medUvi {
+    background-color: yellow;
+    padding: 3px;
+    color: white;
+    border-radius: 10px;
+} 
+
+/* High UVI */
+.highUvi {
+    background-color: orange;
+    padding: 3px;
+    color: white;
+    border-radius: 10px;
+} 
+
+/* Very High UVI */
+.vHighUvi {
+    background-color: red;
+    padding: 3px;
+    color: white;
+    border-radius: 10px;
+} 
+
+/* Extremely High UVI */
+.eHighUvi {
+    background-color: purple;
+    padding: 3px;
+    color: white;
+    border-radius: 10px;
+} 
+
+
