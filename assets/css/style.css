@@ -41,7 +41,7 @@ hr {
 /* Low UVI */
 .lowUvi {
     background-color: green;
-    padding: 3px;
+    padding: 3px 10px;
     color: white;
     border-radius: 10px;
 } 
@@ -49,7 +49,7 @@ hr {
 /* Medium UVI */
 .medUvi {
     background-color: yellow;
-    padding: 3px;
+    padding: 3px 10px;
     color: white;
     border-radius: 10px;
 } 
@@ -57,7 +57,7 @@ hr {
 /* High UVI */
 .highUvi {
     background-color: orange;
-    padding: 3px;
+    padding: 3px 10px;
     color: white;
     border-radius: 10px;
 } 
@@ -65,7 +65,7 @@ hr {
 /* Very High UVI */
 .vHighUvi {
     background-color: red;
-    padding: 3px;
+    padding: 3px 10px;
     color: white;
     border-radius: 10px;
 } 
@@ -73,7 +73,7 @@ hr {
 /* Extremely High UVI */
 .eHighUvi {
     background-color: purple;
-    padding: 3px;
+    padding: 3px 10px;
     color: white;
     border-radius: 10px;
 } 
