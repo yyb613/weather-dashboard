@@ -23,9 +23,43 @@ header {
     padding: 10px;
 }
 
+/* h1, h2 */
+h1, h2 {
+    font-weight: 600;
+}
+
+/* Container */
+.container {
+    margin-left: 60px;
+    max-width: 1800px;
+}
+
 /* Aside, Main */
 aside, main {
     margin: 20px;
+}
+
+/* Search for a City */
+aside > h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Input Box */
+#cityInput {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+/* Search Button */
+#submitForm {
+ background-color: var(--main-color);
+ border-radius: 5px;
+ border: none;
+ color: white;
+ padding: 10px 10px;
+ margin-top: 16px;
+ width: 100%;
 }
 
 /* Horizontal Rule */
@@ -36,6 +70,8 @@ hr {
 /* Current Weather */
 #current {
     border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 /* Low UVI */
@@ -78,6 +114,14 @@ hr {
     border-radius: 10px;
 } 
 
+/* Card */
 .card {
     width: 18rem;
+    background-color: var(--main-color);
+    color: white;
+}
+
+/* Card Date */
+.card-date {
+    font-weight: 900;
 }
