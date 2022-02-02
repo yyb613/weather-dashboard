@@ -2,7 +2,6 @@
 var formEl = document.querySelector('#submitForm'); // Search button
 var dateEl = document.querySelector('#date')        // Date span
 var history = document.querySelector('#history');   // Search history div
-var citiesArray = [];                               // Search history array
 
 // Show date in current weather
 dateEl.textContent = moment().format('(M/D/YYYY)');
@@ -35,7 +34,7 @@ function oneCallWeather(lat, lon, cityInput) {
         })
         .then(function (oneCallData) {
 
-            console.log(oneCallData); // CONSOLE LOG
+            // console.log(oneCallData); // CONSOLE LOG
 
             var cityName = document.querySelector("#cityName");       // City
             cityName.textContent = cityInput;
@@ -157,10 +156,28 @@ function oneCallWeather(lat, lon, cityInput) {
             cardHumid5.textContent = 'Humidity: ' + oneCallData.daily[5].humidity + '%';
         })
 
-    //localStorage.setItem("count", count);
-    history.prepend(cityInput);
-    // console.log(cityInput);
+
+    // SAVE SEARCH HISTORY
+    citiesArray.unshift(cityInput);                 // push entered city to array
+    var citiesString = JSON.stringify(citiesArray); // convert array -> string
+    localStorage.setItem("cities", citiesString);   // push to Local Storage
+
+    // PREPEND SEARCH HISTORY
+    prependCities(); 
 }
+
+// LOAD SEARCH HISTORY
+var citiesArray = JSON.parse(localStorage.getItem("cities")) || []; // get from Local History
+                                                                    // (or create empty array)
+// Prepend Search History Function
+function prependCities() {
+    for (var i = 0; i < citiesArray.length; i++) {
+        history.prepend(citiesArray[i]);  /*** Uncaught TypeError: history.prepend is not a function ***/
+    }
+}
+
+// PREPEND SEARCH HISTORY
+prependCities(); 
 
 // Get coordinates when click 'Search'
 formEl.addEventListener("click", getCoords);
