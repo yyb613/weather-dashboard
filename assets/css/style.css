@@ -72,6 +72,7 @@ hr {
     border: 1px solid black;
     padding: 10px;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 /* Low UVI */
@@ -119,6 +120,7 @@ hr {
     width: 18rem;
     background-color: var(--main-color);
     color: white;
+    margin: 10px;
 }
 
 /* Card Date */
