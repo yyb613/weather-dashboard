@@ -37,7 +37,7 @@ function oneCallWeather(lat, lon, cityInput) {
 
             console.log(oneCallData); // CONSOLE LOG
 
-            var cityName = document.querySelector("#cityName");         // City
+            var cityName = document.querySelector("#cityName");       // City
             cityName.textContent = cityInput;
 
             var icon = document.querySelector("#icon");               // Icon
@@ -77,83 +77,83 @@ function oneCallWeather(lat, lon, cityInput) {
 
             // UPCOMING WEATHER
             // Day 1
-            var cardDate1 = document.querySelector('#day-1 > .card-date'); // Date
+            var cardDate1 = document.querySelector('#day-1 > .card-date');      // Date
             cardDate1.textContent = moment().add(1, 'days').format('M/D/YYYY');
-            var cardIcon1 = document.querySelector('#day-1 > .card-icon'); // Icon
+            var cardIcon1 = document.querySelector('#day-1 > .card-icon');      // Icon
             var iconImg1 = document.createElement("img");
             var iconCode = oneCallData.daily[1].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg1.src = iconURL;
             cardIcon1.appendChild(iconImg1);
-            var cardTemp1 = document.querySelector('#day-1 > .card-temp'); // Temp
+            var cardTemp1 = document.querySelector('#day-1 > .card-temp');      // Temp
             cardTemp1.textContent = 'Temp: ' + oneCallData.daily[1].temp.day + '°F';
-            var cardWind1 = document.querySelector('#day-1 > .card-wind'); // Wind
+            var cardWind1 = document.querySelector('#day-1 > .card-wind');      // Wind
             cardWind1.textContent = 'Wind: ' + oneCallData.daily[1].wind_speed + ' MPH';
             var cardHumid1 = document.querySelector('#day-1 > .card-humidity'); // Humidity
             cardHumid1.textContent = 'Humidity: ' + oneCallData.daily[1].humidity + '%';
 
             // Day 2
-            var cardDate2 = document.querySelector('#day-2 > .card-date'); // Date
+            var cardDate2 = document.querySelector('#day-2 > .card-date');      // Date
             cardDate2.textContent = moment().add(2, 'days').format('M/D/YYYY');
-            var cardIcon2 = document.querySelector('#day-2 > .card-icon'); // Icon
+            var cardIcon2 = document.querySelector('#day-2 > .card-icon');      // Icon
             var iconImg2 = document.createElement("img");
             var iconCode = oneCallData.daily[2].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg2.src = iconURL;
             cardIcon2.appendChild(iconImg2);
-            var cardTemp2 = document.querySelector('#day-2 > .card-temp'); // Temp
+            var cardTemp2 = document.querySelector('#day-2 > .card-temp');      // Temp
             cardTemp2.textContent = 'Temp: ' + oneCallData.daily[2].temp.day + '°F';
-            var cardWind2 = document.querySelector('#day-2 > .card-wind'); // Wind
+            var cardWind2 = document.querySelector('#day-2 > .card-wind');      // Wind
             cardWind2.textContent = 'Wind: ' + oneCallData.daily[2].wind_speed + ' MPH';
             var cardHumid2 = document.querySelector('#day-2 > .card-humidity'); // Humidity
             cardHumid2.textContent = 'Humidity: ' + oneCallData.daily[2].humidity + '%';
 
             // Day 3
-            var cardDate3 = document.querySelector('#day-3 > .card-date'); // Date
+            var cardDate3 = document.querySelector('#day-3 > .card-date');       // Date
             cardDate3.textContent = moment().add(3, 'days').format('M/D/YYYY');
-            var cardIcon3 = document.querySelector('#day-3 > .card-icon'); // Icon
+            var cardIcon3 = document.querySelector('#day-3 > .card-icon');       // Icon
             var iconImg3 = document.createElement("img");
             var iconCode = oneCallData.daily[3].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg3.src = iconURL;
             cardIcon3.appendChild(iconImg3);
-            var cardTemp3 = document.querySelector('#day-3 > .card-temp'); // Temp
+            var cardTemp3 = document.querySelector('#day-3 > .card-temp');       // Temp
             cardTemp3.textContent = 'Temp: ' + oneCallData.daily[3].temp.day + '°F';
-            var cardWind3 = document.querySelector('#day-3 > .card-wind'); // Wind
+            var cardWind3 = document.querySelector('#day-3 > .card-wind');       // Wind
             cardWind3.textContent = 'Wind: ' + oneCallData.daily[3].wind_speed + ' MPH';
-            var cardHumid3 = document.querySelector('#day-3 > .card-humidity'); // Humidity
+            var cardHumid3 = document.querySelector('#day-3 > .card-humidity');  // Humidity
             cardHumid3.textContent = 'Humidity: ' + oneCallData.daily[3].humidity + '%';
 
             // Day 4
-            var cardDate4 = document.querySelector('#day-4 > .card-date'); // Date
+            var cardDate4 = document.querySelector('#day-4 > .card-date');       // Date
             cardDate4.textContent = moment().add(4, 'days').format('M/D/YYYY');
-            var cardIcon4 = document.querySelector('#day-4 > .card-icon'); // Icon
+            var cardIcon4 = document.querySelector('#day-4 > .card-icon');       // Icon
             var iconImg4 = document.createElement("img");
             var iconCode = oneCallData.daily[4].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg4.src = iconURL;
             cardIcon4.appendChild(iconImg4);            
-            var cardTemp4 = document.querySelector('#day-4 > .card-temp'); // Temp
+            var cardTemp4 = document.querySelector('#day-4 > .card-temp');       // Temp
             cardTemp4.textContent = 'Temp: ' + oneCallData.daily[4].temp.day + '°F';
-            var cardWind4 = document.querySelector('#day-4 > .card-wind'); // Wind
+            var cardWind4 = document.querySelector('#day-4 > .card-wind');       // Wind
             cardWind4.textContent = 'Wind: ' + oneCallData.daily[4].wind_speed + ' MPH';
-            var cardHumid4 = document.querySelector('#day-4 > .card-humidity'); // Humidity
+            var cardHumid4 = document.querySelector('#day-4 > .card-humidity');  // Humidity
             cardHumid4.textContent = 'Humidity: ' + oneCallData.daily[4].humidity + '%';
 
             // Day 5
-            var cardDate5 = document.querySelector('#day-5 > .card-date'); // Date
+            var cardDate5 = document.querySelector('#day-5 > .card-date');       // Date
             cardDate5.textContent = moment().add(5, 'days').format('M/D/YYYY');
-            var cardIcon5 = document.querySelector('#day-5 > .card-icon'); // Icon
+            var cardIcon5 = document.querySelector('#day-5 > .card-icon');       // Icon
             var iconImg5 = document.createElement("img");
             var iconCode = oneCallData.daily[5].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg5.src = iconURL;
             cardIcon5.appendChild(iconImg5);
-            var cardTemp5 = document.querySelector('#day-5 > .card-temp'); // Temp
+            var cardTemp5 = document.querySelector('#day-5 > .card-temp');       // Temp
             cardTemp5.textContent = 'Temp: ' + oneCallData.daily[5].temp.day + '°F';
-            var cardWind5 = document.querySelector('#day-5 > .card-wind'); // Wind
+            var cardWind5 = document.querySelector('#day-5 > .card-wind');       // Wind
             cardWind5.textContent = 'Wind: ' + oneCallData.daily[5].wind_speed + ' MPH';
-            var cardHumid5 = document.querySelector('#day-5 > .card-humidity'); // Humidity
+            var cardHumid5 = document.querySelector('#day-5 > .card-humidity');  // Humidity
             cardHumid5.textContent = 'Humidity: ' + oneCallData.daily[5].humidity + '%';
         })
 
