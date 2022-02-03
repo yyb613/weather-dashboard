@@ -1,7 +1,7 @@
 // Initialize Variables
 var formEl = document.querySelector('#submitForm'); // Search button
 var dateEl = document.querySelector('#date')        // Date span
-var historyEl = document.querySelector('#history');   // Search history div
+var historyEl = document.querySelector('#history'); // Search history div
 
 // Show date in current weather
 dateEl.textContent = moment().format('(M/D/YYYY)');
@@ -11,8 +11,9 @@ function getCoords(event) {
     event.preventDefault(); // Prevent Default
 
     var cityInput = document.querySelector("#cityInput").value; // City input from user
-    if(cityInput == "") {
-        cityInput = event.target.textContent
+
+    if (cityInput == '') {                    // if no input...
+        cityInput = event.target.textContent; // it's a history click
     }
     
     var geoURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityInput + '&limit=1&appid=90f0812cb3a9247776512d212a21e74c'; // URL
@@ -38,7 +39,7 @@ function oneCallWeather(lat, lon, cityInput) {
         })
         .then(function (oneCallData) {
 
-            // console.log(oneCallData); // CONSOLE LOG
+            /* console.log(oneCallData); // CONSOLE LOG */
 
             var cityName = document.querySelector("#cityName");       // City
             cityName.textContent = cityInput;
@@ -48,7 +49,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.current.weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg.src = iconURL;
-            icon.innerHTML = "";
+            icon.innerHTML = '';
             icon.appendChild(iconImg);
             
             var currentTemp = document.querySelector("#currentTemp"); // Temp
@@ -76,9 +77,6 @@ function oneCallWeather(lat, lon, cityInput) {
                 uvI.setAttribute("class", "eHighUvi"); // Extremely High UVI
             }
 
-                // var cards = document.querySelectorAll('.card');
-                // cards.style.display = 'none';
-
             // UPCOMING WEATHER
             // Day 1
             var cardDate1 = document.querySelector('#day-1 > .card-date');      // Date
@@ -88,7 +86,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.daily[1].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg1.src = iconURL;
-            cardIcon1.innerHTML = "";
+            cardIcon1.innerHTML = '';
             cardIcon1.appendChild(iconImg1);
             var cardTemp1 = document.querySelector('#day-1 > .card-temp');      // Temp
             cardTemp1.textContent = 'Temp: ' + oneCallData.daily[1].temp.day + '°F';
@@ -105,7 +103,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.daily[2].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg2.src = iconURL;
-            cardIcon2.innerHTML = "";
+            cardIcon2.innerHTML = '';
             cardIcon2.appendChild(iconImg2);
             var cardTemp2 = document.querySelector('#day-2 > .card-temp');      // Temp
             cardTemp2.textContent = 'Temp: ' + oneCallData.daily[2].temp.day + '°F';
@@ -121,7 +119,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconImg3 = document.createElement("img");
             var iconCode = oneCallData.daily[3].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
-            cardIcon3.innerHTML = "";
+            cardIcon3.innerHTML = '';
             iconImg3.src = iconURL;
             cardIcon3.appendChild(iconImg3);
             var cardTemp3 = document.querySelector('#day-3 > .card-temp');       // Temp
@@ -139,7 +137,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.daily[4].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg4.src = iconURL;
-            cardIcon4.innerHTML = "";
+            cardIcon4.innerHTML = '';
             cardIcon4.appendChild(iconImg4);            
             var cardTemp4 = document.querySelector('#day-4 > .card-temp');       // Temp
             cardTemp4.textContent = 'Temp: ' + oneCallData.daily[4].temp.day + '°F';
@@ -155,7 +153,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconImg5 = document.createElement("img");
             var iconCode = oneCallData.daily[5].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
-            cardIcon5.innerHTML = "";
+            cardIcon5.innerHTML = '';
             iconImg5.src = iconURL;
             cardIcon5.appendChild(iconImg5);
             var cardTemp5 = document.querySelector('#day-5 > .card-temp');       // Temp
@@ -168,38 +166,38 @@ function oneCallWeather(lat, lon, cityInput) {
 
 
     // SAVE SEARCH HISTORY
-    citiesArray.unshift(cityInput);                 // push entered city to array
-    if(citiesArray.length > 7) {
-        citiesArray.splice(citiesArray.length - 1, 1)
+    citiesArray.unshift(cityInput);                    // push entered city to array
+    if (citiesArray.length > 8) {                      // if array length > 8...
+        citiesArray.splice(citiesArray.length - 1, 1); // remove last element
     } 
-    var citiesString = JSON.stringify(citiesArray); // convert array -> string
-    localStorage.setItem("cities", citiesString);   // push to Local Storage
+    var citiesString = JSON.stringify(citiesArray);    // convert array -> string
+    localStorage.setItem("cities", citiesString);      // push to Local Storage
 
-    // PREPEND SEARCH HISTORY
-    prependCities(); 
+    // APPEND SEARCH HISTORY
+    appendCities();
 }
 
 // LOAD SEARCH HISTORY
 var citiesArray = JSON.parse(localStorage.getItem("cities")) || []; // get from Local History
                                                                     // (or create empty array)
-// Prepend Search History Function
-function prependCities() {
-    historyEl.innerHTML = ""
+// Append Search History Function
+function appendCities() {
+    historyEl.innerHTML = '';         // reset history
     for (var i = 0; i < citiesArray.length; i++) {
-        var historyBtn = document.createElement("button");
-        historyBtn.textContent = citiesArray[i];
-        historyBtn.setAttribute("class", "row history-btn");
-        historyBtn.addEventListener("click", function(event) {
-            event.preventDefault();
-            document.querySelector("#cityInput").value = "";
-            getCoords(event)
+        var historyBtn = document.createElement("button");     // create button
+        historyBtn.textContent = citiesArray[i];               // inject city from array
+        historyBtn.setAttribute("class", "row history-btn");   // set class
+        historyBtn.addEventListener("click", function(event) { // (upon click...)
+            event.preventDefault();                            // Prevent Default
+            document.querySelector("#cityInput").value = '';   // reset input field
+            getCoords(event);         // call first API
         });
-        historyEl.append(historyBtn); 
+        historyEl.append(historyBtn); // append to history
     }
 }
 
-// PREPEND SEARCH HISTORY
-prependCities(); 
+// APPEND SEARCH HISTORY
+appendCities();
 
 // Get coordinates when click 'Search'
 formEl.addEventListener("click", getCoords);

@@ -52,6 +52,11 @@ aside > h1 {
     padding: 10px;
     text-align: center;
 }
+
+input:focus::placeholder {
+    color: transparent;
+}
+
 /* Search Button */
 #submitForm {
     background-color: var(--main-color);
