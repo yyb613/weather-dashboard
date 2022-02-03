@@ -164,9 +164,11 @@ function oneCallWeather(lat, lon, cityInput) {
             cardHumid5.textContent = 'Humidity: ' + oneCallData.daily[5].humidity + '%';
         })
 
-
     // SAVE SEARCH HISTORY
-    citiesArray.unshift(cityInput);                    // push entered city to array
+    if (!citiesArray.includes(cityInput)) { // if input is not in history...
+        citiesArray.unshift(cityInput);     // push entered city to array
+    }
+
     if (citiesArray.length > 8) {                      // if array length > 8...
         citiesArray.splice(citiesArray.length - 1, 1); // remove last element
     } 
@@ -190,7 +192,7 @@ function appendCities() {
         historyBtn.addEventListener("click", function(event) { // (upon click...)
             event.preventDefault();                            // Prevent Default
             document.querySelector("#cityInput").value = '';   // reset input field
-            getCoords(event);         // call first API
+            getCoords(event);         // call API to show weather
         });
         historyEl.append(historyBtn); // append to history
     }
