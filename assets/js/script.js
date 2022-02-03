@@ -1,7 +1,7 @@
 // Initialize Variables
 var formEl = document.querySelector('#submitForm'); // Search button
 var dateEl = document.querySelector('#date')        // Date span
-var history = document.querySelector('#history');   // Search history div
+var historyEl = document.querySelector('#history');   // Search history div
 
 // Show date in current weather
 dateEl.textContent = moment().format('(M/D/YYYY)');
@@ -11,6 +11,10 @@ function getCoords(event) {
     event.preventDefault(); // Prevent Default
 
     var cityInput = document.querySelector("#cityInput").value; // City input from user
+    if(cityInput == "") {
+        cityInput = event.target.textContent
+    }
+    
     var geoURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityInput + '&limit=1&appid=90f0812cb3a9247776512d212a21e74c'; // URL
 
     fetch(geoURL)
@@ -44,6 +48,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.current.weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg.src = iconURL;
+            icon.innerHTML = "";
             icon.appendChild(iconImg);
             
             var currentTemp = document.querySelector("#currentTemp"); // Temp
@@ -83,6 +88,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.daily[1].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg1.src = iconURL;
+            cardIcon1.innerHTML = "";
             cardIcon1.appendChild(iconImg1);
             var cardTemp1 = document.querySelector('#day-1 > .card-temp');      // Temp
             cardTemp1.textContent = 'Temp: ' + oneCallData.daily[1].temp.day + '°F';
@@ -90,7 +96,7 @@ function oneCallWeather(lat, lon, cityInput) {
             cardWind1.textContent = 'Wind: ' + oneCallData.daily[1].wind_speed + ' MPH';
             var cardHumid1 = document.querySelector('#day-1 > .card-humidity'); // Humidity
             cardHumid1.textContent = 'Humidity: ' + oneCallData.daily[1].humidity + '%';
-
+            
             // Day 2
             var cardDate2 = document.querySelector('#day-2 > .card-date');      // Date
             cardDate2.textContent = moment().add(2, 'days').format('M/D/YYYY');
@@ -99,6 +105,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.daily[2].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg2.src = iconURL;
+            cardIcon2.innerHTML = "";
             cardIcon2.appendChild(iconImg2);
             var cardTemp2 = document.querySelector('#day-2 > .card-temp');      // Temp
             cardTemp2.textContent = 'Temp: ' + oneCallData.daily[2].temp.day + '°F';
@@ -106,7 +113,7 @@ function oneCallWeather(lat, lon, cityInput) {
             cardWind2.textContent = 'Wind: ' + oneCallData.daily[2].wind_speed + ' MPH';
             var cardHumid2 = document.querySelector('#day-2 > .card-humidity'); // Humidity
             cardHumid2.textContent = 'Humidity: ' + oneCallData.daily[2].humidity + '%';
-
+            
             // Day 3
             var cardDate3 = document.querySelector('#day-3 > .card-date');       // Date
             cardDate3.textContent = moment().add(3, 'days').format('M/D/YYYY');
@@ -114,6 +121,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconImg3 = document.createElement("img");
             var iconCode = oneCallData.daily[3].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
+            cardIcon3.innerHTML = "";
             iconImg3.src = iconURL;
             cardIcon3.appendChild(iconImg3);
             var cardTemp3 = document.querySelector('#day-3 > .card-temp');       // Temp
@@ -122,7 +130,7 @@ function oneCallWeather(lat, lon, cityInput) {
             cardWind3.textContent = 'Wind: ' + oneCallData.daily[3].wind_speed + ' MPH';
             var cardHumid3 = document.querySelector('#day-3 > .card-humidity');  // Humidity
             cardHumid3.textContent = 'Humidity: ' + oneCallData.daily[3].humidity + '%';
-
+            
             // Day 4
             var cardDate4 = document.querySelector('#day-4 > .card-date');       // Date
             cardDate4.textContent = moment().add(4, 'days').format('M/D/YYYY');
@@ -131,6 +139,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconCode = oneCallData.daily[4].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
             iconImg4.src = iconURL;
+            cardIcon4.innerHTML = "";
             cardIcon4.appendChild(iconImg4);            
             var cardTemp4 = document.querySelector('#day-4 > .card-temp');       // Temp
             cardTemp4.textContent = 'Temp: ' + oneCallData.daily[4].temp.day + '°F';
@@ -138,7 +147,7 @@ function oneCallWeather(lat, lon, cityInput) {
             cardWind4.textContent = 'Wind: ' + oneCallData.daily[4].wind_speed + ' MPH';
             var cardHumid4 = document.querySelector('#day-4 > .card-humidity');  // Humidity
             cardHumid4.textContent = 'Humidity: ' + oneCallData.daily[4].humidity + '%';
-
+            
             // Day 5
             var cardDate5 = document.querySelector('#day-5 > .card-date');       // Date
             cardDate5.textContent = moment().add(5, 'days').format('M/D/YYYY');
@@ -146,6 +155,7 @@ function oneCallWeather(lat, lon, cityInput) {
             var iconImg5 = document.createElement("img");
             var iconCode = oneCallData.daily[5].weather[0].icon;
             var iconURL = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
+            cardIcon5.innerHTML = "";
             iconImg5.src = iconURL;
             cardIcon5.appendChild(iconImg5);
             var cardTemp5 = document.querySelector('#day-5 > .card-temp');       // Temp
@@ -159,6 +169,9 @@ function oneCallWeather(lat, lon, cityInput) {
 
     // SAVE SEARCH HISTORY
     citiesArray.unshift(cityInput);                 // push entered city to array
+    if(citiesArray.length > 7) {
+        citiesArray.splice(citiesArray.length - 1, 1)
+    } 
     var citiesString = JSON.stringify(citiesArray); // convert array -> string
     localStorage.setItem("cities", citiesString);   // push to Local Storage
 
@@ -171,8 +184,17 @@ var citiesArray = JSON.parse(localStorage.getItem("cities")) || []; // get from 
                                                                     // (or create empty array)
 // Prepend Search History Function
 function prependCities() {
+    historyEl.innerHTML = ""
     for (var i = 0; i < citiesArray.length; i++) {
-        history.prepend(citiesArray[i]);  /*** Uncaught TypeError: history.prepend is not a function ***/
+        var historyBtn = document.createElement("button");
+        historyBtn.textContent = citiesArray[i];
+        historyBtn.setAttribute("class", "row history-btn");
+        historyBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+            document.querySelector("#cityInput").value = "";
+            getCoords(event)
+        });
+        historyEl.append(historyBtn); 
     }
 }
 

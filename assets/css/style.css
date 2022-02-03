@@ -31,6 +31,7 @@ h1, h2 {
 /* Container */
 .container {
     margin-left: 60px;
+    /* margin-right: 50px; */
     max-width: 1800px;
 }
 
@@ -60,6 +61,7 @@ aside > h1 {
     padding: 10px 10px;
     margin-top: 16px;
     width: 100%;
+    font-size: 20px;
 }
 
 #submitForm:hover {
@@ -130,4 +132,15 @@ hr {
 /* Card Date */
 .card-date {
     font-weight: 900;
+}
+
+/* History Buttons */
+.history-btn {
+    margin: 0;
+    margin-bottom: 7px;
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 5px;
+    font-size: 20px;
+    justify-content: center;
 }
