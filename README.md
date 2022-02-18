@@ -3,14 +3,13 @@
 ## Description
 This is a Weather Dashboard that allows users to search by city for current and upcoming weather conditions. Details include temperature, wind speed, humidity, and UV index. User’s search history is saved for easy access.
 
+## License
+![MIT License](https://img.shields.io/badge/license-MIT-red)
+
 ## Deployment
 [Deployment Link](https://yyb613.github.io/weather-dashboard)
 
 ![screenshot](assets/images/screenshot.png)
-
-## License
-
-<img src="https://img.shields.io/badge/license-MIT-red">
   
 This project is licensed under the MIT License.
 
